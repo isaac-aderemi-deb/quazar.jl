@@ -1,64 +1,55 @@
-using OpenCL
-using Vulkan
-using LinearAlgebra
-using DifferentialEquations
-using Gtk
+using Vulkan # graphics api 2
+using LinearAlgebra # relatively self explanitory
+using DifferentialEquations # more maths 
+using Gtk # to make windows for all of this to run on and take inputs from the user
+mutable struct Body
+      colour :: {Array,3}
+      GPE :: Float64 #=gravitational potential energy=#
+      Force ::Float64
+      Mass :: Float64
+      Acceleration :: Float64
+      Dissplacement :: Float64
+      Time :: Float64
+      InitialVelocity :: Float64
+      FinalVelocity :: Float64
 
-
-mutable struct vecthree
-      x::Float64
-      y::Float64
-      z::Float64
-      r::Int16
-      g::Int16
-      b::Int16
-      
-      function GetColour(vecthree)
-            return [r,g,b]
+      function NewtonianG(m_1, m_2, r_x,r_y,r_z) #= Newtonian Gravity=#
+            G = 6.6743015 * 10^-11
+            F_x = (G * m_1 * m_2) / r_x ^ 2
+            f_y = (G * m_1 * m_2) / r_y ^ 2
+            f_z = (G * m_1 * m_2) / r_z ^ 2
+            return 
+      end     
+      function DeflectionAngle(ClosestDistance, m)
+            G = 6.6743015 * 10^-11
+            AngleOfDeflection = 4 * G * m / ClosestDistance * 299792458 ^ 2
+            return AngleOfDeflection
       end
-      function GetColourFloat(vecthree)
-            r=r/255
-            g=g/255
-            b=b/255
-            return [r,g,b]
+      function GetDistance(m_1, m_2)
+            1+1
       end
-      function GetDirection(vecthree)
-            return [x,y,z]
-      end
-      function GetDirectionNorm(vecthree)
-            divisor = sqrt(x^2+y^2+z^2)
-            x=x/divisor
-            y=y/divisor
-            z=z/divisor
-            return [x,y,z]
-            return (x^2+y^2+z^2)
-      end
-      function ColourMult(a::vecthree,b::vecthree)
-            r = a.GetColourFloat[r] * b.GetColourFloat[r]
-            g = a.GetColourFloat[g] * b.GetColourFloat[g]
-            b = a.GetColourFloat[b] * b.GetColourFloat[b]
-            return [r,g,b]
-      end
-
 end 
 
-mutable struct body 
-      vecthree :: vecthree
-      mass::Float64
-      volume::Float64
+function TracerWindow (nx,ny)
+      touch("image.PPM")
+      open("image.PPM", "w") do image  
+      write(image,"P3\n" , string(nx) , " " , string(ny) , "\n" , string(255) , "\n")
+      for i in 1 : ny
+            for j in 1 : nx
+                  r =  (nx - j) / nx
+                  g = i / ny 
+                  b = (i*j) / (nx*ny)
+                  ir = string(Integer(255 - trunc(255.99*r)))
+                  write(image, ir , " ")
+                  ig = string(Integer(255 - trunc(255.99*g)))
+                  write(image,ig , " ")
+                  ib = string(Integer(trunc(255.9*b)))
+                  write(image,ib , " ")
+                  write(image, "\n")
+                                    
+                        end
+            end
 end
-function Base.getproperty(body::body, prop::Symbol)
-      if prop in fieldnames(vecthree) && !(prop in fieldnames(body))
-          return getfield(body.vecthree, prop)
-      else
-          return getfield(body, prop)
-      end
-  end
-# forcing previous functions to work here too 
-bodyvect = vecthree(1.0,
-1.0,
-1.0,
-255,
-6,
-90)
-body ()
+
+
+
