@@ -2,15 +2,16 @@ using Vulkan # graphics api
 using LinearAlgebra # relatively self explanitory
 using DifferentialEquations # maths 
 module PhysicsSimulation
+include("vector3.jl")
 mutable struct Body
       GPE :: Float64 #=gravitational potential energy=#
-      Force ::Float64
+      ResultantForce ::vector3.vec3
       Mass :: Float64
-      Acceleration :: Float64
-      Dissplacement :: Float64
+      Acceleration :: vector3.vec3
+      Dissplacement :: vector3.vec3
       Time :: Float64
-      InitialVelocity :: Float64
-      FinalVelocity :: Float64
+      InitialVelocity :: vector3.vec3
+      FinalVelocity :: vector3.vec3
 
       function NewtonianG(Object1, object2) #= Newtonian Gravity=#
             G = 6.6743015 * 10^-11
@@ -26,6 +27,7 @@ mutable struct Body
             return AngleOfDeflection
       end
       function GetDistance(obj1, obj2)
-            VectorDistance = 
+            VectorDistance = 1
       end 
+end
 end
