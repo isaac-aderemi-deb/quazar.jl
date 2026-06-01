@@ -1,4 +1,3 @@
-using Vulkan # graphics api 
 using LinearAlgebra # relatively self explanitory
 using DifferentialEquations # maths 
 module PhysicsSimulation
