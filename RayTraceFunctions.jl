@@ -1,2 +1,1 @@
-using .vector3
-typeof(x)
+using Vector3
