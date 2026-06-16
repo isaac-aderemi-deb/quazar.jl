@@ -1,0 +1,14 @@
+file_format.txt
+filename.Qaz
+bodies_start
+body1 <(coordinates)>, <(velocity_vect)>, <mass>, <"model_file" or sphere_radius>, <texture_file #=null if there is not one=#>
+body2 <(coordinates)>, <(velocity_vect)>, <mass>, <"model_file" or sphere_radius>, <texture_file #=null if there is not one=#>
+body3 <(coordinates)>, <(velocity_vect)>, <mass>, <"model_file" or sphere_radius>, <texture_file #=null if there is not one=#>
+body4 <(coordinates)>, <(velocity_vect)>, <mass>, <"model_file" or sphere_radius>, <texture_file #=null if there is not one=#>
+    .
+    .
+    .
+bodyn <(coordinates)>, <(velocity_vect)>, <mass>, <"model_file" or sphere radius>, <texturefile #=null if there is not one=#>
+bodies_end
+skybox_texture_file
+body_names((body1, <name>)(body2, <name>)(body3, <name>)(body4, <name>)...(bodyn, <name>))
