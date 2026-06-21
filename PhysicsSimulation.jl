@@ -1,15 +1,14 @@
 module PhysicsSimulation
-include ("main.jl")
+include("vector3.jl")
+using vector3
 mutable struct Body
       GPE :: Float64 #=gravitational potential energy=#
       ResultantForce ::vector3.vec3
       Forces :: Vector{Vector3.vec3}
       Mass :: Float64
-      Acceleration :: vector3.vec3
       Time :: Float64
-      InitialVelocity :: vector3.vec3
-      FinalVelocity :: vector3.vec3
-      coordinates :: vector3.vec3
+      Velocity :: vector3.vec3
+      coordinates :: Vector{Float64}
 
       function NewtonianG(Object1::Body, object2::Body) #= Newtonian Gravity=#
             G = 6.6743015 * 10^-11
@@ -26,6 +25,6 @@ mutable struct Body
             distance_vector = vector3.vec3(xdiff, ydiff, zdiff, 0, 0, 0)
             return distance, distance_vector
       end 
-
 end
+
 end
