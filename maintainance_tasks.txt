@@ -1,3 +1,0 @@
-maintainance_tasks.txt
-
-change vector3.vec3 to vector3.vector3
