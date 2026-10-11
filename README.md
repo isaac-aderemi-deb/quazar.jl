@@ -1,2 +1,1 @@
-This is my astrophysics simulation Quazar.jl made in Julia and feel free to run this code in your favorite IDE just ensure you add any changes you make to a branch (as mentioned in the license)
-This repository will soon be replaced when i learn c++ and leave Julia permanently. The community is nice but not nearly developed enough for what I would like to do. Maybe I'll come back to this language in a few years when things are working properly   
+This is my astrophysics simulation Quazar.jl made in julia and feel free to run this code in your favourite IDE just ensure you add any changes you make to a branch (as mentoned in the licence)
