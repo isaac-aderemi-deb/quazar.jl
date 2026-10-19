@@ -16,13 +16,13 @@ mutable struct Body
       end    
 
       function GetDistance(obj1::Body, obj2::Body)
-            xdiff = obj1.Coordinates.x - obj2.Coordinates.x
-            ydiff = obj1.Coordinates.y - obj2.Coordinates.y
-            zdiff = obj1.Coordinates.z - obj2.Coordinates.z
-            distance = sqrt((xdiff * xdiff) + (ydiff * ydiff) + (zdiff * zdiff))
-            distance_vector = vector3.vec3(xdiff, ydiff, zdiff, 0, 0, 0)
-            return distance, distance_vector
+            distance_vector = SubDir(obj1.Coordinates,obj2.Coordinates)
+            return distance_vector
       end
+      function getAbsDistance(obj1::Body, obj2::Body)
+            vectorDistance = GetDistance(obj1.Coordinates,obj2.Coordinates)
+            distance = √(vectorDistance.x * vectorDistance.x + vectorDistance.y * vectorDistance.y + vectorDistance.z * vectorDistance.z)
+            return distance
 
       function AddForces(object::Body)
             x = vector3.vec3(0,0,0,0,0,0)
@@ -78,5 +78,11 @@ mutable struct Body
       end
 
 end
+mutable struct BodyColection
+      Colection ::Vector{Body}
 
+      function addBody(body::Body)
+            push!(body, Collection)
+      end
+end
 end
