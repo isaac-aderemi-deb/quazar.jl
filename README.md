@@ -1,1 +1,2 @@
-This project will be continuing to be edited after the 13th of November 2026, please check the NEA branch for the code to be marked. This branch will be deleted by July as it will be entirely unnecessary by then.
+If you are here you have successfully been sent to the right branch for marking, or you like seeing old versions of code.
+Either way I hope you have a nice time
